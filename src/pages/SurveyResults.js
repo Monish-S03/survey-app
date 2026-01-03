@@ -58,16 +58,10 @@ const SurveyResults = () => {
 
             <div className="card-grid">
                 {survey.Questions.map((q, index) => {
-                    // Prepare Chart Data
-                    // Count answers for each option (MCQ) or list text (Short Answer)
+                    // Chart Data
                     if (q.type === 'mcq') {
                         const counts = {};
                         q.Options.forEach(op => counts[op.text] = 0);
-
-                        // Iterate all answers in this question (from backend relation)
-                        // Note: The backend controller needs to properly include Answers nested or flat.
-                        // Using the controller logic I wrote: include: [{ model: Question, include: [Option, Answer] }]
-                        // So q.Answers should exist.
 
                         if (q.Answers) {
                             q.Answers.forEach(ans => {

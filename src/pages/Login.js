@@ -13,9 +13,9 @@ const Login = () => {
         try {
             const data = await login(email, password);
             if (data.hasHistory) {
-                navigate('/'); // Old Login Member -> Dashboard (Old History)
+                navigate('/'); // Old Login-> Dashboard (Old History)
             } else {
-                navigate('/create-survey'); // New Login Member -> New Page
+                navigate('/create-survey'); // New Login -> New Page
             }
         } catch (err) {
             alert(err.response?.data?.error || 'Login failed');

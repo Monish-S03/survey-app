@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const checkUser = async () => {
             const token = localStorage.getItem('token');
-            const storedUser = localStorage.getItem('user'); // For immediate UI update, though mostly rely on token validity if we had a /me endpoint
+            const storedUser = localStorage.getItem('user'); 
             if (token && storedUser) {
                 setUser(JSON.parse(storedUser));
             }
@@ -24,12 +24,12 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem('token', res.data.token);
         localStorage.setItem('user', JSON.stringify(res.data.user));
         setUser(res.data.user);
-        return res.data; // Return full data including hasHistory
+        return res.data;
     };
 
     const register = async (username, email, password) => {
         await api.post('/auth/register', { username, email, password });
-        // After register, maybe auto login or redirect to login. User implied "new pages", so we'll likely redirect to Login.
+        //login or redirect to login.redirect to Login.
     };
 
     const logout = () => {

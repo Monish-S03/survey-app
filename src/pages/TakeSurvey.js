@@ -6,14 +6,13 @@ const TakeSurvey = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [survey, setSurvey] = useState(null);
-    const [answers, setAnswers] = useState({}); // { questionId: { text: "", optionId: "" } }
+    const [answers, setAnswers] = useState({}); 
 
     useEffect(() => {
         const fetchSurvey = async () => {
             try {
                 const res = await api.get(`/surveys/${id}`);
                 setSurvey(res.data);
-                // Initialize answers state
                 const initialAnswers = {};
                 res.data.Questions.forEach(q => {
                     initialAnswers[q.id] = { questionId: q.id };

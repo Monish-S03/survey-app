@@ -10,8 +10,6 @@ const UserProfile = () => {
         navigate('/login');
         return null;
     }
-
-    // Formatting date if available
     const joinDate = user.createdAt ? new Date(user.createdAt).toLocaleDateString() : 'Unknown';
 
     return (
